@@ -1,6 +1,7 @@
-import FormComponent from "./Components/FormComponent";
+import SignUp from "./Components/SignUp";
 import styled from "styled-components";
 import React from "react";
+import LogIn from "./Components/LogIn";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -16,7 +17,8 @@ class App extends React.Component {
   render() {
     return (
       <AppContainer className="App">
-        <FormComponent />
+        <SignUp />
+        <LogIn />
       </AppContainer>
     );
   }

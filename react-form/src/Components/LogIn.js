@@ -8,7 +8,6 @@ const FormStyles = styled.div`
   padding: 32px;
   gap: 32px;
   width: 400px;
-
   color: #111;
   border: 2px solid gray;
   box-shadow: -3px -2px 10px rgba(0, 0, 0, 0.2);
@@ -63,7 +62,7 @@ const Submit = styled.button`
   color: rgb(255, 255, 255);
   background-color: rgb(0, 188, 212);
   text-align: center;
-  padding: 8px;
+  padding: 8px 16px;
   border-radius: 4px;
   border: 1px solid #fff;
   box-shadow: 2px 2px 2px #fff;
@@ -90,20 +89,28 @@ const LogInTag = styled.div`
   font-weight: 400;
 `;
 
-class FormComponent extends React.Component {
+const SignUp = styled.p`
+  color: rgb(0, 188, 212);
+  text-decoration: underline;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  animation: 1s ease-in;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+class LogIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
       email: "",
       password: "",
-      confirmPassword: "",
+
+      signUp: true,
     };
   }
-
-  handleUsernameChange = (e) => {
-    this.setState({ username: e.target.value });
-  };
 
   handleEmailChange = (e) => {
     this.setState({ email: e.target.value });
@@ -113,49 +120,34 @@ class FormComponent extends React.Component {
     this.setState({ password: e.target.value });
   };
 
-  handleConfirmPasswordChange = (e) => {
-    this.setState({ confirmPassword: e.target.value });
-  };
-
   render() {
     return (
       <FormStyles>
-        {" "}
-        <SignUpHeading>Sign Up</SignUpHeading>
+        <SignUpHeading>Log In</SignUpHeading>
         <FormTextArea>
-          <Input
-            value={this.state.username}
-            type="text"
-            placeholder="user name"
-            onChange={this.handleUsernameChange}
-          ></Input>
+          <labe>email addres</labe>
           <Input
             value={this.state.email}
             type="email"
             placeholder="email"
             onChange={this.handleEmailChange}
           ></Input>
+          <labe>password</labe>
           <Input
             value={this.state.password}
             type="password"
             placeholder="password"
             onChange={this.handlePasswordChange}
           ></Input>
-          <Input
-            value={this.state.confirmPassword}
-            type="password"
-            placeholder="confirm password"
-            onChange={this.handleConfirmPasswordChange}
-          ></Input>
         </FormTextArea>
-        <Submit>SUBMIT</Submit>
+        <Submit>LOGIN</Submit>
         <LogInContainer>
-          <LogInTag>Aleady have an account?</LogInTag>
-          <a href="#">Log in here</a>
+          <LogInTag>Create an account ?</LogInTag>
+          <SignUp>Sign up here</SignUp>
         </LogInContainer>
       </FormStyles>
     );
   }
 }
 
-export default FormComponent;
+export default LogIn;
