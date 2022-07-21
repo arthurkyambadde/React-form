@@ -4,7 +4,7 @@ import React from "react";
 
 const AppContainer = styled.div`
   width: 100vw;
-  height: 199vh;
+  padding: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

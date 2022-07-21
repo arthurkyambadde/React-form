@@ -5,9 +5,10 @@ const FormStyles = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 16px;
+  padding: 32px;
+  gap: 32px;
   width: 400px;
-  height: 600px;
+
   color: #111;
   border: 2px solid gray;
   box-shadow: -1px -1px 5px #666;
@@ -20,6 +21,7 @@ const SignUpHeading = styled.p`
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 48px;
+  color: #111;
 `;
 
 const FormTextArea = styled.form`
@@ -33,24 +35,124 @@ const FormTextArea = styled.form`
 const Input = styled.input`
   width: 100%;
   border: none;
+  outline: none;
   border-bottom: 2px solid #999;
   padding: 12px 20px;
   margin: 8px 0 0 0;
+  color: #111;
+  letter-spacing: 1.5px;
+  overflow: hidden;
   box-sizing: border-box;
+  border-radius: 4px;
+  &::placeholder {
+    color: #9999;
+    font-size: 16px;
+    font-weight: 100px;
+  }
+  &:focus,
+  &:active {
+    border: none;
+    color: #555;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+  }
+`;
+
+const Submit = styled.button`
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 188, 212);
+  text-align: center;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 2px #fff;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 16px;
+  animation: 0.1s linear;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.01);
+  }
+`;
+
+const LogInContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LogInTag = styled.div`
+  font-size: 16px;
+  font-weight: 400;
 `;
 
 class FormComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    };
+  }
+
+  handleUsernameChange = (e) => {
+    this.setState({ username: e.target.value });
+  };
+
+  handleEmailChange = (e) => {
+    this.setState({ email: e.target.value });
+  };
+
+  handlePasswordChange = (e) => {
+    this.setState({ password: e.target.value });
+  };
+
+  handleConfirmPasswordChange = (e) => {
+    this.setState({ confirmPassword: e.target.value });
+  };
+
   render() {
     return (
       <FormStyles>
         {" "}
         <SignUpHeading>Sign Up</SignUpHeading>
         <FormTextArea>
-          <Input type="text" placeholder="user name"></Input>
-          <Input type="email" placeholder="email"></Input>
-          <Input type="password" placeholder="password"></Input>
-          <Input type="password" placeholder="confirm password"></Input>
+          <Input
+            value={this.state.username}
+            type="text"
+            placeholder="user name"
+            onChange={this.handleUsernameChange}
+          ></Input>
+          <Input
+            value={this.state.email}
+            type="email"
+            placeholder="email"
+            onChange={this.handleEmailChange}
+          ></Input>
+          <Input
+            value={this.state.password}
+            type="password"
+            placeholder="password"
+            onChange={this.handlePasswordChange}
+          ></Input>
+          <Input
+            value={this.state.confirmPassword}
+            type="password"
+            placeholder="confirm password"
+            onChange={this.handleConfirmPasswordChange}
+          ></Input>
         </FormTextArea>
+        <Submit>SUBMIT</Submit>
+        <LogInContainer>
+          <LogInTag>Aleady have an account?</LogInTag>
+          <a href="#">Log in here</a>
+        </LogInContainer>
       </FormStyles>
     );
   }
