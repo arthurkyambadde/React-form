@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Form = styled.div`
-  width: 100%;
+const FormStyles = styled.div`
+  width: 400px;
+  height: 600px;
+  color: #111;
+  border: 1px solid gray;
 `;
 
 class FormComponent extends React.Component {
   render() {
-    return <Form></Form>;
+    return <FormStyles> React FormComponent</FormStyles>;
   }
 }
 
