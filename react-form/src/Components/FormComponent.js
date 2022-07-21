@@ -11,7 +11,7 @@ const FormStyles = styled.div`
 
   color: #111;
   border: 2px solid gray;
-  box-shadow: -1px -1px 5px #666;
+  box-shadow: -3px -2px 10px rgba(0, 0, 0, 0.2);
   background-color: #f2f2f2;
 `;
 
