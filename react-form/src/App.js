@@ -1,7 +1,8 @@
 import SignUp from "./Components/SignUp";
 import styled from "styled-components";
-import React from "react";
-import LogIn from "./Components/LogIn";
+import React, { Suspense } from "react";
+const LogIn = React.lazy(() => import("./Components/LogIn"));
+// import LogIn from "./Components/LogIn";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -42,7 +43,11 @@ class App extends React.Component {
     let userFormDisplayed;
 
     if (this.state.isUser) {
-      userFormDisplayed = <LogIn switchFunction={this.changeToSignUp} />;
+      userFormDisplayed = (
+        <Suspense>
+          <LogIn switchFunction={this.changeToSignUp} />;
+        </Suspense>
+      );
     } else {
       userFormDisplayed = <SignUp switchFunction={this.changeToLogin} />;
     }
