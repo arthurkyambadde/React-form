@@ -14,13 +14,40 @@ const AppContainer = styled.div`
 `;
 
 class App extends React.Component {
-  render() {
-    return (
-      <AppContainer className="App">
-        <SignUp />
-        <LogIn />
-      </AppContainer>
+  constructor(props) {
+    super(props);
+    this.state = {
+      isUser: false,
+    };
+  }
+
+  changeToSignUp = () => {
+    this.setState({
+      isUser: false,
+    });
+  };
+
+  changeToLogin = () => {
+    this.setState(
+      {
+        isUser: true,
+      }
+      // () => {
+      //   console.log(this.isUser);
+      // }
     );
+  };
+
+  render() {
+    let userFormDisplayed;
+
+    if (this.state.isUser) {
+      userFormDisplayed = <LogIn switchFunction={this.changeToSignUp} />;
+    } else {
+      userFormDisplayed = <SignUp switchFunction={this.changeToLogin} />;
+    }
+
+    return <AppContainer className="App">{userFormDisplayed}</AppContainer>;
   }
 }
 

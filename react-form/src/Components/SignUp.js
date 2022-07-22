@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FormStyles = styled.div`
-  display: none;
+  display: flex;
   align-items: center;
   flex-direction: column;
   padding: 32px;
@@ -162,7 +162,7 @@ class SignUp extends React.Component {
         <Submit>SUBMIT</Submit>
         <LogInContainer>
           <LogInTag>Aleady have an account ?</LogInTag>
-          <Login>Log in here</Login>
+          <Login onClick={this.props.switchFunction}>Log in here</Login>
         </LogInContainer>
       </FormStyles>
     );

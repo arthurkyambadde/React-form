@@ -27,7 +27,7 @@ const FormTextArea = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  gap: 32px;
   width: 100%;
 `;
 
@@ -101,6 +101,17 @@ const SignUp = styled.p`
   }
 `;
 
+const DetailWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const InputLabel = styled.label`
+  color: #555;
+`;
+
 class LogIn extends React.Component {
   constructor(props) {
     super(props);
@@ -125,25 +136,30 @@ class LogIn extends React.Component {
       <FormStyles>
         <SignUpHeading>Log In</SignUpHeading>
         <FormTextArea>
-          <labe>email addres</labe>
-          <Input
-            value={this.state.email}
-            type="email"
-            placeholder="email"
-            onChange={this.handleEmailChange}
-          ></Input>
-          <labe>password</labe>
-          <Input
-            value={this.state.password}
-            type="password"
-            placeholder="password"
-            onChange={this.handlePasswordChange}
-          ></Input>
+          <DetailWrapper>
+            <InputLabel>Email addres</InputLabel>
+            <Input
+              value={this.state.email}
+              type="email"
+              placeholder="email"
+              onChange={this.handleEmailChange}
+            ></Input>
+          </DetailWrapper>
+
+          <DetailWrapper>
+            <InputLabel>Password</InputLabel>
+            <Input
+              value={this.state.password}
+              type="password"
+              placeholder="password"
+              onChange={this.handlePasswordChange}
+            ></Input>
+          </DetailWrapper>
         </FormTextArea>
         <Submit>LOGIN</Submit>
         <LogInContainer>
           <LogInTag>Create an account ?</LogInTag>
-          <SignUp>Sign up here</SignUp>
+          <SignUp onClick={this.props.switchFunction}>Sign up here</SignUp>
         </LogInContainer>
       </FormStyles>
     );
