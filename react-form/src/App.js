@@ -44,7 +44,7 @@ class App extends React.Component {
 
     if (this.state.isUser) {
       userFormDisplayed = (
-        <Suspense>
+        <Suspense fallback={<p>loading.....</p>}>
           <LogIn switchFunction={this.changeToSignUp} />;
         </Suspense>
       );
