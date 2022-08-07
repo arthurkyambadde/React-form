@@ -121,6 +121,8 @@ class LogIn extends React.Component {
 
       signUp: true,
     };
+
+    this.logInInputRef = React.createRef();
   }
 
   handleEmailChange = (e) => {
@@ -130,6 +132,10 @@ class LogIn extends React.Component {
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
   };
+
+  componentDidMount() {
+    this.logInInputRef.current.focus();
+  }
 
   render() {
     return (
@@ -143,6 +149,7 @@ class LogIn extends React.Component {
               type="email"
               placeholder="email"
               onChange={this.handleEmailChange}
+              ref={this.logInInputRef}
             ></Input>
           </DetailWrapper>
 

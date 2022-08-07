@@ -111,6 +111,8 @@ class SignUp extends React.Component {
       confirmPassword: "",
       signUp: true,
     };
+
+    this.signUpInputRef = React.createRef();
   }
 
   handleUsernameChange = (e) => {
@@ -129,6 +131,10 @@ class SignUp extends React.Component {
     this.setState({ confirmPassword: e.target.value });
   };
 
+  componentDidMount() {
+    this.signUpInputRef.current.focus();
+  }
+
   render() {
     return (
       <FormStyles>
@@ -139,6 +145,7 @@ class SignUp extends React.Component {
             type="text"
             placeholder="user name"
             onChange={this.handleUsernameChange}
+            ref={this.signUpInputRef}
           ></Input>
           <Input
             value={this.state.email}
